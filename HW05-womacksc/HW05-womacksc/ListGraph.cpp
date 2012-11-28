@@ -15,7 +15,7 @@ void ListGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight){
 		bool identical = false;
 	
 		//Check if edge already exists in u's list
-		for(std::list<NWPair>::const_iterator iter = edgeList.[u].begin(); iter != edgeList[u].end(); iter++){
+		for(std::list<NWPair>::const_iterator iter = edgeList[u].begin(); iter != edgeList[u].end(); iter++){
 				//http://stdcxx.apache.org/doc/stdlibug/2-2.html and class notes
 				
 			if((iter->first == v) && (iter->second == weight)){			
