@@ -13,9 +13,10 @@ void ListGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight){
 		
 	if ((0 <= u < edgeList.size()) && (0 <= v < edgeList.size()) && (u != v) && (weight > 0)){		
 		bool identical = false;
+                  std::list<NWPair>::const_iterator iter;
 	
 		//Check if edge already exists in u's list
-		for(std::list<NWPair>::const_iterator iter = edgeList[u].begin(); iter != edgeList[u].end(); iter++){
+		for(iter = edgeList[u].begin(); iter != edgeList[u].end(); iter++){
 				//http://stdcxx.apache.org/doc/stdlibug/2-2.html and class notes
 				
 			if((iter->first == v) && (iter->second == weight)){			
@@ -24,8 +25,8 @@ void ListGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight){
 		}
 			
 		if (identical == false){			
-			edgeList.at(u).push_back(NWPair(v,weight));	//adds edge to u's list		
-			edgeList.at(v).push_back(NWPair(u,weight));	
+			edgeList[u].push_back(std::make_pair(v,weight));	//adds edge to u's list		
+			edgeList[v].push_back(std::make_pair(u,weight));	
 			//push_back understanding grabbed from http://www.yolinux.com/TUTORIALS/LinuxTutorialC++STL.html though code is different
 			num_edges++;		
 		}	
