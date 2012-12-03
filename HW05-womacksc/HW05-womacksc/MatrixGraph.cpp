@@ -10,8 +10,8 @@ MatrixGraph::~MatrixGraph(){}
 void MatrixGraph::addEdge(NodeID u, NodeID v, EdgeWeight weight){
 	bool identical = false;
 	  // checks if edge exists
-	if (M[u].at(v) != 0 || M[v].at(u) != 0){
-		identical == true;
+	if (M[u].at(v) == 0 || M[v].at(u) == 0){
+		identical = true;
 	}
 	if ((identical == false) && (0 <= u < M.size()) && (0 <= v < M.size()) && (u != v) && (weight > 0))	{		
 		M[u].at(v) = weight;		
